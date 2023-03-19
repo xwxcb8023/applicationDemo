@@ -30,6 +30,9 @@
 					"titleNView": false
 				}
 			}
+		},
+		{
+			"path": "pages/navigate/navigateTo"
 		}
 	],
 	"globalStyle": {

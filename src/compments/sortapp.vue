@@ -2,7 +2,7 @@
   <uni-list>
   	<uni-list :border="true">
   		<!-- 显示圆形头像 -->
-  		<view class="ui-list-item" v-for="(item, index) in applist">
+  		<view class="ui-list-item" v-for="(item, index) in applist" @click="openUrl(item.link)">
 			<view class="ui-list-item-left"><text class="list-sort">{{index + 1}}</text></view>
 			<image 
 			  class="appicon" 
@@ -65,7 +65,12 @@ watch(() => props.application, (newData:ListType, oldData:ListType) => {
 },{ deep: true })
 
 // 监听加载状态变化
-watch(() => props.reStatus, (newData:any, oldData:any) => status.value = newData)
+watch(() => props.reStatus, (newData:any, oldData:any) => status.value = newData);
+
+// 外部跳转
+const openUrl = (url:any) => {
+	uni.navigateTo({url: `/pages/navigate/navigateTo?url=${url[0].attributes.href}`})
+}
 </script>
 <style lang="scss">
 @import "../style/sortapp.scss";

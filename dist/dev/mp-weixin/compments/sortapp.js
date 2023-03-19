@@ -26,6 +26,9 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       applist.value = newData;
     }, { deep: true });
     common_vendor.watch(() => props.reStatus, (newData, oldData) => status.value = newData);
+    const openUrl = (url) => {
+      common_vendor.index.navigateTo({ url: `/pages/navigate/navigateTo?url=${url[0].attributes.href}` });
+    };
     return (_ctx, _cache) => {
       return {
         a: common_vendor.f(common_vendor.unref(applist), (item, index, i0) => {
@@ -45,7 +48,8 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
                 })
               };
             }),
-            g: common_vendor.t(item.attributes["im:id"])
+            g: common_vendor.t(item.attributes["im:id"]),
+            h: common_vendor.o(($event) => openUrl(item.link))
           };
         }),
         b: common_vendor.p({
