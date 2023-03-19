@@ -1,0 +1,56 @@
+.scrollList{
+  white-space: nowrap;
+  width: 100%;
+  display: flex;
+  margin-top:10rpx;
+  border-bottom:1px solid #eee;
+  .uni-bg-blue{
+  	background-color: blue;
+  }
+  .uni-bg-green{
+  	background-color: green;
+  }
+  .scroll-view-item_H{
+  	display: inline-block;
+  	width:180rpx;
+  	height:280rpx;
+  	margin-left:15rpx;
+  	margin-right:15rpx;
+  	line-height: 300rpx;
+  	text-align: center;
+  	font-size: 36rpx;
+  	overflow: hidden;
+  	.appimgbox{
+  		width:180rpx;
+  		height: 180rpx;
+  		border-radius: 50rpx;
+  		overflow: hidden;
+  		.appimg{
+  			display: block;
+  			width:100%;
+  			height: 100%;
+  		}
+  	}
+  	.appName{
+  		width: 100%;
+  		padding: 8rpx;
+  		box-sizing: border-box;
+  		height: 50rpx;
+  		line-height:50rpx;
+  		font-size: 25rpx;
+  		color: #333;
+  		font-weight: bold;
+  		margin-bottom: 0rpx;
+  	}
+  	.apptype{
+  		width: 100%;
+  		box-sizing: border-box;
+  		height:35rpx;
+  		line-height:35rpx;
+  		font-size: 25rpx;
+  		color: #999;
+  		display: block;
+  		margin-top: 3rpx;
+  	}
+  }
+}

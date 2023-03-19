@@ -1,0 +1,79 @@
+	
+.chat-custom-right {
+	flex: 1;
+	/* #ifndef APP-NVUE */
+	display: flex;
+	/* #endif */
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+}
+.ui-list-item{
+	width: 100%;
+	height:180rpx;
+	position:relative;
+	display:flex;
+	flex-direction: row;
+	padding-top:25rpx;
+	padding-bottom:25rpx;
+	box-sizing: border-box;
+	.ui-list-item-left{
+		width:30rpx !important;
+		height:100%;
+		text-align:center;
+		position: relative;
+		padding:0rpx;
+		.list-sort{
+		    font-size:30rpx;
+			color:#999;
+			width: 100%;
+			position: relative;
+			top:40%;
+		}
+	}
+	.appicon{
+		margin-left:10rpx;
+		margin-right:20rpx;
+		width:135rpx !important;
+		height:135rpx;
+		flex-grow:0rpx;
+		flex-shrink:0rpx;
+		border-radius:20rpx;
+	}
+	.right-content{
+		flex:1;
+		height:135rpx;
+		display:flex;
+		flex-direction: column;
+		.list-title{
+			width:100%;
+			font-size:28rpx;
+			color:#333;
+		}
+		.list-note{
+			width:100%;
+			font-size:25rpx;
+			color:#999;
+			position: relative;
+			top:13rpx;
+		}
+		.list-bottom-icon{
+			position: relative;
+			top:20rpx;
+			display: block;
+			padding: 0rpx;
+		}
+		.icons{
+			display: inline-block;
+		}
+		.list-number{
+			width:100%;
+			font-size:25rpx;
+			color:#ccc;
+			margin-left:10rpx;
+		}
+	}
+}
+// ::v-deep(.uni-list-chat){
+// 	width:100% !important;
+// }
