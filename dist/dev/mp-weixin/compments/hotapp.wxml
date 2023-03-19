@@ -1,0 +1,1 @@
+<scroll-view scroll-x="true" class="scrollList data-v-6acef3b8"><view wx:for="{{a}}" wx:for-item="item" class="scroll-view-item_H data-v-6acef3b8"><view class="appimgbox data-v-6acef3b8"><image class="appimg data-v-6acef3b8" src="{{item.a}}"/></view><view class="appName data-v-6acef3b8">{{item.b}}</view><text class="apptype data-v-6acef3b8">{{item.c}}</text></view></scroll-view>

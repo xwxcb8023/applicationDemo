@@ -1,0 +1,69 @@
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.page.data-v-83a5a03c {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  box-sizing: border-box;
+}
+.page .titleBox.data-v-83a5a03c {
+  width: 100%;
+  text-align: left;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+  flex: 1;
+  margin-top: 170rpx;
+}
+.page .titleBox .titlName.data-v-83a5a03c {
+  font-size: 18rpx;
+  color: #333;
+  font-weight: bolder;
+  text-indent: 20rpx;
+}
+.page .top-hot-app.data-v-83a5a03c {
+  width: 100%;
+  height: 300rpx;
+  flex-grow: 0rpx;
+  flex-shrink: 0rpx;
+}
+.page .content.data-v-83a5a03c {
+  flex: 1;
+  height: 100%;
+  overflow: auto;
+  background-color: gray;
+}
+.data-v-83a5a03c::-webkit-scrollbar {
+  display: none;
+  width: 0 !important;
+  height: 0 !important;
+  -webkit-appearance: none;
+  background: transparent;
+}
+.uni-scroll-view.data-v-83a5a03c::-webkit-scrollbar {
+  display: none;
+}

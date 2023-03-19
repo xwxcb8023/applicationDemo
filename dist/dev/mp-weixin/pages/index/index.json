@@ -1,0 +1,8 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "search": "../../compments/search",
+    "hotapp": "../../compments/hotapp",
+    "sortapp": "../../compments/sortapp"
+  }
+}

@@ -1,0 +1,1 @@
+<view class="head data-v-1ce3b248"><uni-icons wx:if="{{b}}" style="{{a}}" class="searchIcon data-v-1ce3b248" u-i="1ce3b248-0" bind:__l="__l" u-p="{{b}}"></uni-icons><input type="text" class="input data-v-1ce3b248" style="{{c}}" placeholder="Search…" bindchange="{{d}}" bindblur="{{e}}" value="{{f}}" bindinput="{{g}}"/></view>
