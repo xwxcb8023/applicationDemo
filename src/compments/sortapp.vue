@@ -2,8 +2,14 @@
   <uni-list>
   	<uni-list :border="true">
   		<!-- 显示圆形头像 -->
-  		<view class="ui-list-item" v-for="(item, index) in applist" @click="openUrl(item.link)">
-			<view class="ui-list-item-left"><text class="list-sort">{{index + 1}}</text></view>
+  		<view 
+		   class="ui-list-item" 
+		   v-for="(item, index) in applist" 
+		   @click="openUrl(item.link)
+		">
+			<view class="ui-list-item-left">
+				<text class="list-sort">{{index + 1}}</text>
+			</view>
 			<image 
 			  class="appicon" 
 			  :style="(index+1) % 2 ===0 ? 'border-radius:100%':'border-radius:20rpx'" 
@@ -26,7 +32,11 @@
 			</view>
 		</view>
 	</uni-list>
-	<uni-load-more iconType="circle" :status="status" :content-text="contentText"/>
+	<uni-load-more 
+	  v-show="status !== 'more' ? false : true" 
+	  iconType="circle" :status="status" 
+	  :content-text="contentText"
+	/>
   </uni-list>
 </template>
 
@@ -45,19 +55,20 @@ interface ListType {
   }
   name: string
 }		
-import { reactive, watch, ref, onMounted, computed } from 'vue';
-import { onReachBottom, onPullDownRefresh,onLaunch, onShow } from "@dcloudio/uni-app";
+import { reactive, watch, ref } from 'vue';
+import { onShow } from "@dcloudio/uni-app";
+
 // Props 对象
 const props = defineProps(["reStatus", "application"]);
 // 数据加载三个状态
 const contentText = reactive({contentdown: '加载更多应用',contentrefresh: '获取数据中…',contentnomore: '没有更多'});
 // 动态列表数组
 let applist:ListType[] = ref([]);
+// 加载状态
+const status = ref(props.reStatus);
 let iconStatus = reactive([1,2,3,4,5])
 
 onShow(() => applist.value = props.application)
-// 加载状态
-const status = ref(props.reStatus);
 
 // 监听列表检索变化
 watch(() => props.application, (newData:ListType, oldData:ListType) => {
@@ -68,9 +79,7 @@ watch(() => props.application, (newData:ListType, oldData:ListType) => {
 watch(() => props.reStatus, (newData:any, oldData:any) => status.value = newData);
 
 // 外部跳转
-const openUrl = (url:any) => {
-	uni.navigateTo({url: `/pages/navigate/navigateTo?url=${url[0].attributes.href}`})
-}
+const openUrl = (url:any) => {uni.navigateTo({url: `/pages/navigate/navigateTo?url=${url[0].attributes.href}`})}
 </script>
 <style lang="scss">
 @import "../style/sortapp.scss";

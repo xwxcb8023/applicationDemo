@@ -22,11 +22,14 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     const init = () => renderlist.value = sortapp.slice(0, 10);
     common_vendor.onShow(() => init());
     const request = (url) => {
+      reachStatus.value = "loading";
       url = api_api.GET_APPS.replace("${limit}", limit);
       api_requests.get(url).then((res) => {
         sortapp = [...sortapp, ...utils_utils.handlerData(res.feed.entry)];
+        reachStatus.value = "more";
       }).catch((err) => {
         console.log(new Error(err.message));
+        reachStatus.value = "no-more";
       });
     };
     common_vendor.onPullDownRefresh(() => {
@@ -43,19 +46,14 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       reachStatus.value = "loading";
       renderlist.value = [...renderlist.value, ...arr];
       reachStatus.value = "more";
-      console.log("翻页");
     });
-    const getSearch = (val) => {
-      if (val !== "") {
-        let res = renderlist.value.filter((item) => {
-          let str = item.name + item.attributes.label;
-          return str.indexOf(val) !== -1;
-        });
-        renderlist.value = res;
-      } else {
-        init();
-      }
+    const filterFunc = (val) => {
+      renderlist.value = renderlist.value.filter((item) => {
+        let str = item.name + item.attributes.label;
+        return str.indexOf(val) !== -1;
+      });
     };
+    const getSearch = (val) => val !== "" ? filterFunc(val) : init();
     return (_ctx, _cache) => {
       return {
         a: common_vendor.o(getSearch),

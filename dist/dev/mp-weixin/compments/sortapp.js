@@ -19,9 +19,9 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     const props = __props;
     const contentText = common_vendor.reactive({ contentdown: "加载更多应用", contentrefresh: "获取数据中…", contentnomore: "没有更多" });
     let applist = common_vendor.ref([]);
+    const status = common_vendor.ref(props.reStatus);
     let iconStatus = common_vendor.reactive([1, 2, 3, 4, 5]);
     common_vendor.onShow(() => applist.value = props.application);
-    const status = common_vendor.ref(props.reStatus);
     common_vendor.watch(() => props.application, (newData, oldData) => {
       applist.value = newData;
     }, { deep: true });
@@ -55,7 +55,8 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         b: common_vendor.p({
           border: true
         }),
-        c: common_vendor.p({
+        c: status.value !== "more" ? false : true,
+        d: common_vendor.p({
           iconType: "circle",
           status: status.value,
           ["content-text"]: contentText

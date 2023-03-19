@@ -7,7 +7,6 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     const props = __props;
     const applist = common_vendor.reactive(props.app);
     const openUrl = (url) => {
-      console.log(url[0].attributes.href);
       common_vendor.index.navigateTo({ url: `/pages/navigate/navigateTo?url=${url[0].attributes.href}` });
     };
     return (_ctx, _cache) => {

@@ -1,8 +1,15 @@
 <template>
   <view class="page">
 	  <Search @callBackSearch="getSearch"/>
-	  <view class="titleBox"><h4 class="titlName">Recommend</h4></view>
-	  <view class="top-hot-app"> <Hotapp :app="apps"/> </view>
+	  
+	  <view class="titleBox">
+		  <h4 class="titlName">Recommend</h4>
+	  </view>
+	  
+	  <view class="top-hot-app"> 
+	      <Hotapp :app="apps"/> 
+	  </view>
+	  
 	  <view class="content">
 		<Sortapp
 		  :reStatus="reachStatus"
@@ -27,8 +34,8 @@ interface ListType {
   }
   name: string
 }
-import { ref, reactive, onBeforeMount,onMounted } from 'vue'
-import { onReachBottom, onPullDownRefresh,onLaunch, onShow } from "@dcloudio/uni-app";
+import { ref, reactive } from 'vue'
+import { onReachBottom, onPullDownRefresh, onShow } from "@dcloudio/uni-app";
 import Search from '../../compments/search';
 import Hotapp from '../../compments/hotapp';
 import Sortapp from "../../compments/sortapp";
@@ -50,11 +57,14 @@ onShow(() => init())
 
 // 网络请求数据
 const request = (url:string) => {
+	reachStatus.value = "loading"
 	url = GET_APPS.replace('${limit}', limit);
 	get(url).then((res:any) => {
 		sortapp = [...sortapp, ...handlerData(res.feed.entry)];
+		reachStatus.value = "more"
 	}).catch((err:any) => {
 		console.log(new Error(err.message))
+		reachStatus.value = "no-more"
 	})
 }
 
@@ -64,7 +74,7 @@ onPullDownRefresh(() => {
 	uni.stopPullDownRefresh();
 })
 
-// 下拉加载更多数据
+// 上拉加载更多数据(翻页)
 onReachBottom(() => {
 	page = page + limit;
 	let arr = sortapp.slice(page+1, page+1 + limit);
@@ -72,24 +82,22 @@ onReachBottom(() => {
 	   request(GET_APPS);
 	   return;
 	}
-	reachStatus.value = "loading"
+	reachStatus.value = "loading";
 	renderlist.value = [...renderlist.value, ...arr];
-    reachStatus.value = "more"
-	console.log("翻页");
+    reachStatus.value = "more";
 })
 
-// 实时检索
-const getSearch = (val:any) => {
-	if(val !== ''){
-		let res = renderlist.value.filter((item:string) => {
-			let str = item.name + item.attributes.label;
-			return str.indexOf(val) !== -1;
-		})
-		renderlist.value = res
-	}else {
-		init()
-	}
+// 过滤下拉列表检索内容
+const filterFunc = (val:string) => {
+	renderlist.value = renderlist.value.filter((item:string) => {
+		let str = item.name + item.attributes.label;
+		return str.indexOf(val) !== -1;
+	});
 }
+
+// 实时检索
+const getSearch = (val:string) => val !== '' ? filterFunc(val) : init();
+
 </script>
 
 <style scoped lang="scss">

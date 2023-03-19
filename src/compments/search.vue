@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 const search = ref("");
 const inputDom = ref("");
 const emits = defineEmits(["callBackSearch"]);
@@ -26,7 +26,7 @@ icon.value = platform === "devtools" ? {'bottom':'18rpx'}:{'bottom':'23rpx'};
 // 获取输入框内容
 const getValue = (val:any) => {
 	search.value = val.detail.value;
-	emits("callBackSearch",search.value)
+	emits("callBackSearch", search.value)
 }
 
 </script>
@@ -62,5 +62,4 @@ const getValue = (val:any) => {
 		border-radius: 50rpx;
 	}
 }
-
 </style>
